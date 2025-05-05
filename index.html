@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator, Web App</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            width: 300px;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .screen {
+            width: 95%;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            background: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            font-size: 35px;
+            border: none;
+            background: #444;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+          
+        }
+        button:hover {
+            background: #666;
+        }
+        .Clr{
+  color: blue;
+        }
+        .opr{
+  color: orange;
+  font-size: 45px;
+}
+#equal{
+  font-size: 50px;
+color: green;
+}
+.opt{
+  
+width: 60px;
+height: 60px;
+font-size: 30px;
+border-radius: 20px;
+margin-top: none;
+color: orange;
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: white;
+  
+}
+.tgl{
+    width: 60px;
+    font-size: 18px;
+}
+   </style>
+</head>
+<body>
+
+
+
+    <div class="calculator">
+        
+       <input type= "text" class="screen" id="screen" contenteditable="true" placeholder="Input value" readonly>
+       <br><br>
+        <div class="buttons">
+    
+        
+            <button class="Clr" onclick="clearScreen()">C</button>
+               
+            <button class="opr" onclick="appendValue('/')">/</button>
+            
+                
+            <button class="opr" onclick="appendValue('*')">*</button>
+            
+                
+<button class="opt" onclick="backspace()">←</button>
+
+                
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            
+              <button onclick="appendValue('9')">9</button>
+            
+            
+                
+                
+               
+          
+            
+                <button class="opr" onclick="appendValue('+')">+</button>
+            
+            <button onclick="appendValue('4')">4</button>
+            
+                  
+            <button onclick="appendValue('5')">5</button>
+            
+               <button onclick="appendValue('6')">6</button>
+               
+              <button class="opr" onclick="appendValue('-')">-</button>
+
+               
+                 <button onclick="appendValue('1')">1</button>
+                 
+                                         <button onclick="appendValue('2')">2</button>
+                                         
+               <button onclick="appendValue('3')">3</button>
+        
+                 
+               <button onclick="appendValue(')')" >)</button>
+         
+         
+            
+          
+          
+
+  <button onclick="appendValue('.')">.</button>
+               
+               
+          
+               <button onclick="appendValue('(')" >(</button>     
+          
+          
+            
+
+                   <button onclick="appendValue('0')">0</button>
+                   
+               <button onclick="percentage()">%</button>
+               
+              <button class="tgl" onclick="toggleTheme()">theme</button>
+              
+             <button onclick="squareRoot()">√</button>
+             
+            <button onclick="square()">x²</button>
+
+
+
+                   <button id="equal">=</button>
+                  
+
+
+
+
+    
+</div>
+  
+
+ 
+  
+    <script>
+  let screen = document.getElementById("screen"); // Get the screen input
+
+function appendValue(value) {
+  screen.value += value;  // Add value to the screen
+}
+
+function calculateResult() {
+  try {
+    screen.value = eval(screen.value);  // Evaluate and display result
+  } catch (error) {
+    screen.value = "Error";  // Show Error if expression is wrong
+  }
+}
+
+document.getElementById("equal").addEventListener("click", calculateResult);
+
+
+function clearScreen() {
+  screen.value = "";  // Clear everything
+}
+
+        
+        
+     const display = document.getElementById('screen');
+const cancelBtn = document.getElementById('cancelBtn');
+
+cancelBtn.addEventListener('click', function() {
+    display.value = display.value.slice(0, -1);
+});
+
+
+function toggleTheme() {
+  document.body.classList.toggle("dark-theme");
+}
+
+ function squareRoot() {
+  const screen = document.getElementById("screen");
+  screen.value = Math.sqrt(parseFloat(screen.value));
+}
+
+
+function square() {
+  const screen = document.getElementById("screen");
+  screen.value = Math.pow(parseFloat(screen.value), 2);
+}
+
+
+function percentage() {
+  const screen = document.getElementById("screen");
+  screen.value = parseFloat(screen.value) / 100;
+}
+
+
+ 
+</script>
+
+</body>
+</html>
+
+
+
+
+
