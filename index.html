@@ -66,8 +66,8 @@ color: green;
   
 width: 60px;
 height: 60px;
-font-size: 30px;
-border-radius: 20px;
+font-size: 25px;
+border-radius: 30px;
 margin-top: none;
 color: orange;
 }
@@ -101,8 +101,8 @@ color: orange;
                 
             <button class="opr" onclick="appendValue('*')">*</button>
             
-                
-<button class="opt" onclick="backspace()">←</button>
+                <button class="opt" onclick="cancelLast()">⌫</button>
+
 
                 
             <button onclick="appendValue('7')">7</button>
@@ -153,13 +153,13 @@ color: orange;
 
                    <button onclick="appendValue('0')">0</button>
                    
-               <button onclick="percentage()">%</button>
+               <button onclick="calculatePercentage()">%</button>
                
               <button class="tgl" onclick="toggleTheme()">theme</button>
               
-             <button onclick="squareRoot()">√</button>
+             <button onclick="calculateSquareRoot()">√</button>
              
-            <button onclick="square()">x²</button>
+            <button onclick="calculateSquare()">x²</button>
 
 
 
@@ -198,36 +198,36 @@ function clearScreen() {
 }
 
         
-        
-     const display = document.getElementById('screen');
-const cancelBtn = document.getElementById('cancelBtn');
-
-cancelBtn.addEventListener('click', function() {
-    display.value = display.value.slice(0, -1);
-});
+        function cancelLast() {
+  screen.value = screen.value.slice(0, -1);
+}
 
 
 function toggleTheme() {
   document.body.classList.toggle("dark-theme");
 }
 
- function squareRoot() {
-  const screen = document.getElementById("screen");
-  screen.value = Math.sqrt(parseFloat(screen.value));
-}
+    function calculateSquareRoot() {
+      let value = parseFloat(screen.value);
+      if (!isNaN(value)) {
+        screen.value = Math.sqrt(value);
+      }
+    }
 
+    function calculateSquare() {
+      let value = parseFloat(screen.value);
+      if (!isNaN(value)) {
+        screen.value = Math.pow(value, 2);
+      }
+    }
 
-function square() {
-  const screen = document.getElementById("screen");
-  screen.value = Math.pow(parseFloat(screen.value), 2);
-}
-
-
-function percentage() {
-  const screen = document.getElementById("screen");
-  screen.value = parseFloat(screen.value) / 100;
-}
-
+    function calculatePercentage() {
+      let value = parseFloat(screen.value);
+      if (!isNaN(value)) {
+        screen.value = value / 100;
+      }
+    }
+  
 
  
 </script>
